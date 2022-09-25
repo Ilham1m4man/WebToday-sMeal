@@ -1,0 +1,34 @@
+:root {
+    --pr-color: #4D3E3E;
+    --sc-color: #FFF3CD;
+    --rd-color: #FFC38B;
+    --fr-color: #FF926B;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--sc-color);
+}
+
+main {
+    margin: 32px auto;
+}
+
+.container {
+    border: 1px solid red;
+    margin: 20px auto;
+}
+
+.row {
+    border: 1px solid green;
+}
+
+.is-hidden {
+    display: none;
+}
