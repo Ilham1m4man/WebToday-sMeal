@@ -1,13 +1,36 @@
 import './component/app-bar.js';
 import './component/randomize-section.js';
+import './render-swiper.js';
 import './component/list-categories.js';
+
 import DataSource from './data/data-source.js';
-import ListCategories from './component/list-categories.js';
-/* import ListCategories from './component/list-categories.js'; */
+import Swiper, { Navigation, Pagination, Grid } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/grid';
+
+const swiper = new Swiper('.swiper', {
+    modules: [Navigation, Pagination, Grid],
+    // Optional parameters
+    direction: 'horizontal',
+    loop: false,
+
+    // If we need pagination
+    pagination: {
+        el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    
+});
 
 
-
-/* import ListCategories from './component/list-categories'; */
 
 function main() {
     const showResponseMessage = (message = 'Check your internet connection') => {
@@ -65,29 +88,7 @@ function main() {
             showResponseMessage(err);
         });
     })
-    
-    /* const apa = ListCategories.SelectedCtg();
-    console.log(apa);
-    const categoriesContainer = document.querySelector('#container-ctg');
-    console.log(categoriesContainer); */
-    
-    // Meals Listed by Categories
 
-    /* const dataSelectedCtg = DataSource.searchMealByCategories();
-
-    const renderSelectedCategory = (meals) => {
-        
-        selectedCategory.innerHTML = '';
-
-    }
-     */
-    /* const btnSelected = document.querySelector('#category-btn');
-    btnSelected.addEventListener('click', function () {
-        const selectedCategory = document.querySelector('#categories-name');
-        console.log(selectedCategory);
-    }) */
-    //Allergies Section
-    
 }
 
 export default main;

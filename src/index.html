@@ -13,12 +13,56 @@
         <app-bar></app-bar>
     </header>
     <main>
-        <!-- <search-bar></search-bar> -->
         <randomize-sec></randomize-sec>
         <list-categories></list-categories>
-        <div class="container fw-bold" style="color: #4D3E3E;">
-            <h1 id="title-listed-ctg">Here's The Meal Listed by The Categories</h1>
-            <div class="row" id="listed-ctg">
+        <div class="container">
+            <div class="row">
+                <!-- Slider main container -->
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide" style="background-color: #4D3E3E;">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-food gy-4">
+                                    <div class="card card-food text-center ratio ratio-21x9">
+                                        <img src="https://www.themealdb.com/images/media/meals/qywups1511796761.jpg" alt="Boulangère Potatoes" class="card-img-top card-thumb">
+                                        <div class="card-body text-center fw-light ctgName">
+                                            <a class="btn stretched-link">
+                                                <h5 class=" fw-light fs-6 position-absolute top-50 start-50 translate-middle">Boulangère Potatoes</h5>
+                                            </a>
+                                        </div>        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-food gy-4">
+                                    <div class="card card-food text-center ratio ratio-21x9">
+                                        <img src="https://www.themealdb.com/images/media/meals/qywups1511796761.jpg" alt="Boulangère Potatoes" class="card-img-top card-thumb">
+                                        <div class="card-body text-center fw-light ctgName">
+                                            <a class="btn stretched-link">
+                                                <h5 class=" fw-light fs-6 position-absolute top-50 start-50 translate-middle">Boulangère Potatoes</h5>
+                                            </a>
+                                        </div>        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">Slide 3</div>
+                        
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                    <!-- If we need scrollbar -->
+                    <div class="swiper-scrollbar"></div>
+                </div>
             </div>
         </div>
         <div class="container fw-bold" style="color: #4D3E3E;">
