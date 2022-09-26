@@ -32,3 +32,49 @@ main {
 .is-hidden {
     display: none;
 }
+
+.card-thumb {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0;
+    max-height: 100%;
+    transition: all 0.2s ease-out;
+}
+
+
+
+.ctgName {
+    color: var(--sc-color);
+    background-color: rgba(77, 62, 62, 0.85);
+    opacity: 0;
+    transition: all 0.2s ease-out;
+}
+
+.ctgName:hover {
+    filter: brightness(100%);
+    opacity: 100%;
+}
+
+/* .wrap-ini {
+    border: solid blue 5px;
+    overflow: auto;
+} */
+
+/* .name-div {
+    transition: all 0.2s ease-out;
+    background-color: black;
+} */
+
+.card-food {
+    border-radius: 0;
+}
+
+.card-food:hover {
+    background: #FFF3CD;
+    box-shadow:  6px 6px 10px #a15c43;
+}
+
+/* .card-food:hover {
+    background-color: black;
+} */
+

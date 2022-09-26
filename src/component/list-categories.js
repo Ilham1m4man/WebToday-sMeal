@@ -59,7 +59,7 @@ class ListCategories extends HTMLElement {
               <div class="card">
                 <button type="button" class="ctgBtn" id="categoryBtn${index}">
                     <div class="card-body text-center fw-light">
-                        <h5 class="ctgName">${ctg.strCategory.toUpperCase()}</h5>
+                        <h5 class="ctgNameOri">${ctg.strCategory.toUpperCase()}</h5>
                     </div>
                 </button>
               </div>
@@ -94,22 +94,52 @@ class ListCategories extends HTMLElement {
 const mealsFilteredByCtg = (meals, selectedBtn) => {
     const titleListedCtg = document.querySelector('#title-listed-ctg');
     const listedMealElement = document.querySelector('#listed-ctg');
-    
-    titleListedCtg.innerText = `Here's The Meal Listed by ${selectedBtn}`;
+    const colFoodElement = document.querySelector('.col-food');
 
-    /* const thumbMeal = meals.strMealThumb; */
-    for (const [index, nameMealByCtg] of meals.entries()) {
+    titleListedCtg.innerText = `Here's The Meal Listed by ${selectedBtn}`;
+    
+    if(colFoodElement == null) {
+    
+        for (const [index, mealByCtg] of meals.entries()) {
         const nameMeal = meals[index].strMeal;
+        const thumbMeal = meals[index].strMealThumb;
 
         listedMealElement.innerHTML += `
-            <div class="col-lg-4 col-md-6 col-sm-12" style="margin-top: 12px;">
-              <div class="card">
-                    <div class="card-body text-center fw-light">
-                        <h5 class="ctgName fw-light fs-6">${nameMeal}</h5>
-                    </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-food gy-4">
+              <div class="card card-food text-center ratio ratio-21x9">
+              
+                <img src="${thumbMeal}" alt="${nameMeal}" class="card-img-top card-thumb">
+                
+                <div class="card-body text-center fw-light ctgName">
+                    <a class="btn stretched-link">
+                        <h5 class=" fw-light fs-6 position-absolute top-50 start-50 translate-middle">${nameMeal}</h5>
+                    </a>
+                </div>        
               </div>
             </div>
           `;
+        }
+    } else {
+        listedMealElement.textContent = '';
+        for (const [index, mealByCtg] of meals.entries()) {
+            const nameMeal = meals[index].strMeal;
+            const thumbMeal = meals[index].strMealThumb;
+    
+            listedMealElement.innerHTML += `
+                <div class="col-lg-4 col-md-6 col-sm-12 col-food gy-4">
+                  <div class="card card-food text-center ratio ratio-21x9">
+                  
+                        <img src="${thumbMeal}" alt="${nameMeal}" class="card-img-top card-thumb">
+                        
+                        <div class="card-body text-center fw-light ctgName">
+                        <a class="btn stretched-link">
+                        <h5 class=" fw-light fs-6 position-absolute top-50 start-50 translate-middle">${nameMeal}</h5>
+                        </a>
+                        </div>
+                  </div>
+                </div>
+              `;
+            }
     }
     /* renderListedMeal(meals); */
 
