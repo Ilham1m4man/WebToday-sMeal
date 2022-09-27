@@ -43,3 +43,28 @@ main {
     border: none;
     background-color: transparent;
 }
+
+.time {
+    border-radius: 25px;
+    background: #4D3E3E;
+    /* box-shadow:  15px 15px 30px #604e4e,
+                -15px -15px 30px #604e4e; */
+    color: var(--sc-color);
+    max-width: 280px;
+    margin: 30px;
+    border: none;
+}
+
+.time #clock {
+    font-size: 3em;
+    margin: 0 auto;
+    padding-top: 0;
+  }
+  
+  .time #date {
+    font-size: 24px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+  }
+
+
