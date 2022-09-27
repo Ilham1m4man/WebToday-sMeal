@@ -53,8 +53,6 @@ window.mealsFilteredByCtg = (selectedBtn) => {
         const titleListedCtg = document.querySelector('#title-listed-ctg');
         const colFoodElement = document.querySelector('.col-food');
         const swiperWrapperElement = document.querySelector('.swiper-wrapper');
-        console.log(meals.length);
-
 
         titleListedCtg.innerText = `Here's The Meal Listed by ${selectedBtn}`;
 
@@ -71,24 +69,7 @@ window.mealsFilteredByCtg = (selectedBtn) => {
                     mealThumb: thumbMeal
                 };
 
-                /* if (meals.length < 9) {
-                    swiperWrapperElement.innerHTML += `
-                    <div class="swiper-slide">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-food" style="margin: 1em auto;">
-                                <div class="card card-food text-center ratio ratio-21x9">
-                                    <img src="${thumbMeal}" alt="${nameMeal}" class="card-img-top card-thumb">            
-                                    <div class="card-body text-center fw-light ctgName">
-                                        <a class="btn stretched-link">
-                                            <h5 class=" fw-light fs-6 position-absolute top-50 start-50 translate-middle">${nameMeal}</h5>
-                                        </a>
-                                    </div>        
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                } else  */if (loopCounter % 9 == 0) {
+                if (loopCounter % 9 == 0) {
                     renderSwiper(pageCounter);
                     renderListedMealByCtg(tempArray, pageCounter);
                     tempArray = [];
@@ -97,16 +78,9 @@ window.mealsFilteredByCtg = (selectedBtn) => {
                     renderSwiper(pageCounter);
                     renderListedMealByCtg(tempArray, pageCounter);
                 }
-                /* if (((loopCounter - 1) + remainder == meals.length) < (loopCounter <= meals.length)) {
-                    console.log('jalan cuk');
-                    console.log(loopCounter);
-                    console.log(index);
-                    
-                } */
                 loopCounter++;
             }
         } else {
-            
             swiperWrapperElement.textContent = ``;
             for (const [index, mealByCtg] of meals.entries()) {
                 const nameMeal = meals[index].strMeal;
@@ -115,27 +89,8 @@ window.mealsFilteredByCtg = (selectedBtn) => {
                     mealName: nameMeal,
                     mealThumb: thumbMeal
                 };
-
-                /* if (meals.length < 9) {
-                    swiperWrapperElement.innerHTML += `
-                    <div class="swiper-slide">
-                        <div class="row">
-                    
-                        
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-food" style="margin: 1em auto;">
-                                <div class="card card-food text-center ratio ratio-21x9">
-                                    <img src="${thumbMeal}" alt="${nameMeal}" class="card-img-top card-thumb">            
-                                    <div class="card-body text-center fw-light ctgName">
-                                        <a class="btn stretched-link">
-                                            <h5 class=" fw-light fs-6 position-absolute top-50 start-50 translate-middle">${nameMeal}</h5>
-                                        </a>
-                                    </div>        
-                                </div>
-                           </div>
-                        </div>
-                    </div>
-                `;
-                } else  */if (loopCounter % 9 == 0) {
+                
+                if (loopCounter % 9 == 0) {
                     renderSwiper(pageCounter);
                     renderListedMealByCtg(tempArray, pageCounter);
                     tempArray = [];
@@ -144,11 +99,6 @@ window.mealsFilteredByCtg = (selectedBtn) => {
                     renderSwiper(pageCounter);
                     renderListedMealByCtg(tempArray, pageCounter);
                 }
-                /* if (((loopCounter - 1) + remainder == meals.length) < (loopCounter <= meals.length)) {
-                    console.log('jalan cuk');
-                    console.log(loopCounter);
-                    
-                } */
                 loopCounter++;
             }
         }

@@ -1,8 +1,5 @@
 window.renderSwiper = function(pageCounter) {
     const containerListedMeal = document.querySelector('.swiper-wrapper');
-    /* const createElmSwiperSlide = document.createElement("div");
-    createElmSwiperSlide.classList.add('row', `swiper-slide${pageCounter}`);
-    containerListedMeal.appendChild(createElmSwiperSlide); */
 
     containerListedMeal.innerHTML += `
         <div class="swiper-slide">
