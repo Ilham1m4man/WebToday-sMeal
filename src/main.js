@@ -1,36 +1,27 @@
 import './component/app-bar.js';
 import './component/randomize-section.js';
-import './render-swiper.js';
+import './component/render-swiper.js';
+import './component/meals-listed-by-ctg.js';
 import './component/list-categories.js';
 
 import DataSource from './data/data-source.js';
-import Swiper, { Navigation, Pagination, Grid } from 'swiper';
+import Swiper, { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/grid';
 
 const swiper = new Swiper('.swiper', {
-    modules: [Navigation, Pagination, Grid],
-    // Optional parameters
+    modules: [Navigation, Pagination],
     direction: 'horizontal',
     loop: false,
-
-    // If we need pagination
     pagination: {
         el: '.swiper-pagination',
     },
-
-    // Navigation arrows
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
-
-    
 });
-
-
 
 function main() {
     const showResponseMessage = (message = 'Check your internet connection') => {

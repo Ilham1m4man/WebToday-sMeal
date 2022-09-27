@@ -1,5 +1,4 @@
 import DataSource from "../data/data-source.js";
-/* const mealsFilteredByCtg = () => require('../mealsFilteredByCtg.js'); */
 
 class ListCategories extends HTMLElement {
     constructor() {
@@ -16,12 +15,7 @@ class ListCategories extends HTMLElement {
     }
 
     getData(selectedBtn) {
-        this.dataListedCtg = DataSource.searchMealByCategories(selectedBtn);
-        this.dataListedCtg.then(meal => {
-            mealsFilteredByCtg(meal, selectedBtn);
-        }).catch(err => {
-            this.showResponseMessage(err);
-        });
+        mealsFilteredByCtg(selectedBtn);
     }
     
     render(meals) {
@@ -76,23 +70,6 @@ class ListCategories extends HTMLElement {
                 <div class="row w-75 justify-content-center" id="kategori"></div>
             </div>
         </div>
-        <div class="container" style="color: #4D3E3E;">
-            <h1 id="title-listed-ctg" class="fw-bold"></h1>
-            <div class="row" id="listed-ctg">
-                <!-- Slider main container -->
-                <div class="swiper">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper"></div>
-
-                    <!-- Pagination -->
-                    <div class="swiper-pagination"></div>
-
-                    <!-- Navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    
-                </div>
-            </div>
         `;
 
         const categoriesElement = document.querySelector('#kategori');
@@ -136,79 +113,6 @@ class ListCategories extends HTMLElement {
         }
     }
 }
-
-const mealsFilteredByCtg = (meals, selectedBtn) => {
-    const titleListedCtg = document.querySelector('#title-listed-ctg');
-    const listedMealElement = document.querySelector('#listed-ctg');
-    const colFoodElement = document.querySelector('.col-food');
-    /* console.log(meals); */
-
-    let pageCounter = 0;
-    let tempArray = [];
-    titleListedCtg.innerText = `Here's The Meal Listed by ${selectedBtn}`;
-    if(colFoodElement == null) {
-        
-        for (const [index, mealByCtg] of meals.entries()) {
-        const nameMeal = meals[index].strMeal;
-        const thumbMeal = meals[index].strMealThumb;
-        tempArray[index] = {
-            objIndex: index,
-            mealName: nameMeal,
-            mealThumb: thumbMeal
-        };
-
-        /* if(index % 9 == 0) {
-            pageCounter++;
-            renderSwiper(pageCounter);
-            renderListedMealByCtg(tempArray, pageCounter);
-            tempArray = [];
-        } */
-        /* listedMealElement.innerHTML += `
-            <div class="col-lg-4 col-md-6 col-sm-12 col-food gy-4">
-              <div class="card card-food text-center ratio ratio-21x9">
-              
-                <img src="${thumbMeal}" alt="${nameMeal}" class="card-img-top card-thumb">
-                
-                <div class="card-body text-center fw-light ctgName">
-                    <a class="btn stretched-link">
-                        <h5 class=" fw-light fs-6 position-absolute top-50 start-50 translate-middle">${nameMeal}</h5>
-                    </a>
-                </div>        
-              </div>
-            </div>
-          `; */
-        }
-    } else {
-        listedMealElement.textContent = '';
-        for (const [index, mealByCtg] of meals.entries()) {
-            const nameMeal = meals[index].strMeal;
-            const thumbMeal = meals[index].strMealThumb;
-            
-            /* if(index % 9 == 0) {
-                apaIya++;
-                console.log(apaIya);
-            } */
-
-            listedMealElement.innerHTML += `
-                <div class="col-lg-4 col-md-6 col-sm-12 col-food gy-4">
-                  <div class="card card-food text-center ratio ratio-21x9">
-                  
-                        <img src="${thumbMeal}" alt="${nameMeal}" class="card-img-top card-thumb">
-                        
-                        <div class="card-body text-center fw-light ctgName">
-                        <a class="btn stretched-link">
-                        <h5 class=" fw-light fs-6 position-absolute top-50 start-50 translate-middle">${nameMeal}</h5>
-                        </a>
-                        </div>
-                  </div>
-                </div>
-              `;
-            }
-    }
-
-
-}
-
 
 
 customElements.define('list-categories', ListCategories);

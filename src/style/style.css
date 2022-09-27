@@ -37,3 +37,9 @@ main {
     width: 98.2%;
     height: 100%;
   }
+
+
+.stretched-link {
+    border: none;
+    background-color: transparent;
+}
