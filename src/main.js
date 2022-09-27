@@ -1,7 +1,7 @@
 import './component/app-bar.js';
 import './component/randomize-section.js';
 import './component/render-swiper.js';
-import './component/meals-listed-by-ctg.js';
+import './component/listed-meals.js';
 import './component/list-categories.js';
 
 import DataSource from './data/data-source.js';
@@ -71,14 +71,28 @@ function main() {
         `;
     }
     const btnRandom = document.querySelector('#btnRandomize');
+    const renderClickCounter = (clickCounter) => {
+        const clickCounterElement = document.querySelector('#click-counter');
+        clickCounterElement.innerText = clickCounter;
+    }
+
+    
+    let clickCounter = 3;
+    renderClickCounter(clickCounter);
     btnRandom.addEventListener('click', function () {
+
+        clickCounter -= 1;
+
         const dataRandom = DataSource.randomMeal();
         dataRandom.then(meal => {
             renderMeal(meal);
         }).catch(err => {
             showResponseMessage(err);
         });
-    })
+    });
+
+
+
 
 }
 
