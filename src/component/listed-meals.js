@@ -59,7 +59,6 @@ window.mealsFilteredByCtg = (selectedBtn) => {
         let pageCounter = 0;
         let tempArray = [];
         let loopCounter = 1;
-        const remainder = meals.length % 9;
         if (colFoodElement == null) {
             for (const [index, mealByCtg] of meals.entries()) {
                 const nameMeal = meals[index].strMeal;
