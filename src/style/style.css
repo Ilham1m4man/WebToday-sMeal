@@ -36,7 +36,7 @@ main {
 .swiper {
     width: 98.2%;
     height: 100%;
-  }
+}
 
 
 .stretched-link {
@@ -51,7 +51,7 @@ main {
                 -15px -15px 30px #604e4e; */
     color: var(--sc-color);
     max-width: 280px;
-    margin: 30px;
+    margin: 10px 30px;
     border: none;
 }
 
@@ -59,12 +59,13 @@ main {
     font-size: 3em;
     margin: 0 auto;
     padding-top: 0;
-  }
-  
-  .time #date {
+}
+
+.time #date {
     font-size: 24px;
     margin: 0 auto;
     padding-bottom: 10px;
-  }
+}
+
 
 
