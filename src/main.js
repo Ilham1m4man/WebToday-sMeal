@@ -3,6 +3,7 @@ import './component/randomize-section.js';
 import './component/render-swiper.js';
 import './component/listed-meals.js';
 import './component/list-categories.js';
+import './component/recipes.js';
 
 import DataSource from './data/data-source.js';
 import Swiper, { Navigation, Pagination } from 'swiper';
@@ -24,13 +25,18 @@ const swiper = new Swiper('.swiper', {
     },
 });
 
-function main() {
-    const showResponseMessage = (message = 'Check your internet connection') => {
-        alert(message);
-    };
+let clickCounter = 0;
 
-    // Random Meal Section
-    const renderMeal = (meals) => {
+const storageKeyClickCounter = 'CLICK_COUNTER';
+
+const btnRandom = document.querySelector('#btnRandomize');
+
+const showResponseMessage = (message = 'Check your internet connection') => {
+    alert(message);
+};
+
+function main() {
+    function renderMeal(meals) {
         const infoElement = document.querySelector('#listMeal');
         const name = meals[0].strMeal;
         const thumb = meals[0].strMealThumb;
@@ -108,6 +114,14 @@ function main() {
         .optiontwo.main-item.green .avatar-bg:before {
             background-color: var(--pr-color);
         }
+
+        .main-item > h4 {
+            background-color: rgb(255, 195, 139, 0.5);
+            border-radius: 2px;
+            padding: 50px;
+            border-radius: 20px;
+            
+        }
         </style>
 
         
@@ -120,9 +134,7 @@ function main() {
                         <div class="card-body">
                             <h2 class="card-title" style="color: #FFC38B">${name}</h2>
                             <h4 class="card-title">Kategori: ${category}</h4>
-                            <button type="button" class="btn btn-primary" id="alergi">Alergi</button>
                             <button type="button" class="btn btn-secondary">Lihat Resep</button>
-                            <p class="card-text fs-6 fw-light">*Tekan tombol Alergi jika kamu alergi terhadap makanan/bahan makanan ini dan kamu akan mendapatkan kesempatan untuk randomize meal lagi!</p>
                         </div>
                     </div>
                 </div>
@@ -131,17 +143,39 @@ function main() {
         
         `;
     }
-    const btnRandom = document.querySelector('#btnRandomize');
 
+    function isStorageExist() {
+        if (typeof Storage === undefined) {
+            alert("Browser kamu tidak mendukung local storage");
+            return false;
+        }
+        return true;
+    }
 
+    function isTheClientHaveData() {
+        const clickData = localStorage.getItem(storageKeyClickCounter);
+        return (clickData != null) ? true : false;
+    }
 
-    /* const clickManager = () => {} */
+    function removeDataStorage() {
+        const theData = localStorage.removeItem(storageKeyClickCounter);
+        console.log('Data telah dihapus');
+    }
 
-    let clickCounter = 0;
+    function loadDataFromStorage() {
+        const serializedData = localStorage.getItem(storageKeyClickCounter);
+        let dataClickCounter = JSON.parse(serializedData);
+        return dataClickCounter;
+    }
 
-    const renderClickCounter = (clickCounter) => {
+    function saveData(theClickerCounter) {
+        const parsed = JSON.stringify(theClickerCounter);
+        localStorage.setItem(storageKeyClickCounter, parsed);
+    }
+
+    const renderClickCounter = () => {
         const clickCounterElement = document.querySelector('#click-counter');
-        clickCounterElement.innerText = clickCounter;
+        clickCounterElement.innerText = loadDataFromStorage();
     }
 
     const getRandomMealData = () => {
@@ -153,50 +187,51 @@ function main() {
         });
     }
 
-    
-   /*  renderClickCounter(clickCounter); */
-
-    const clickManager = (clickCounter) => {
-        if (clickCounter == 0) {
+    const clickManager = () => {
+        renderClickCounter();
+        if (loadDataFromStorage() <= 0) {
             console.log('Sorry you have 0 chance to click, please comeback tomorrow:)');
             btnRandom.setAttribute('style', 'pointer-events: none');
-            /* updateTime(); */
-            /* clickManager(); */
         } else {
             btnRandom.removeAttribute('style', 'pointer-events: none')
             btnRandom.addEventListener('click', function () {
-                clickCounter -= 1;
-                renderClickCounter(clickCounter);
+                let decreaseClickCounter = loadDataFromStorage() - 1;
+                saveData(decreaseClickCounter);
+                renderClickCounter();
                 getRandomMealData();
-                /* clickManager(); */
+                clickManager();
             });
         }
     }
 
+    const storageChecker = () => {
+        if (isStorageExist()) {
+            if (!isTheClientHaveData()) {
+                clickCounter = 1;
+                saveData(clickCounter);
+            }
+            clickManager();
+        }
+    }
+
     const resetClickChance = () => {
-        if (moment().format('LTS') == '00.07.20') {
-            clickCounter = 3;
-            renderClickCounter(clickCounter);
-            clickManager(clickCounter);
-        } /* else {
-            clickManager(clickCounter);
-        } */
+        removeDataStorage();
+        storageChecker();
+    }
+
+    function midnightChecker() {
+        if (moment().format('LTS') == '00.00.00') {
+            resetClickChance();
+        }
     }
 
     const updateTime = () => {
-        resetClickChance();
-        /* clickManager(); */
+        midnightChecker();
         setTimeout(updateTime, 1000);
     }
     updateTime();
-
-
-    
-
-
-
-
-
+    storageChecker();
 }
+
 
 export default main;
