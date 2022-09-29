@@ -61,9 +61,11 @@ window.mealsFilteredByCtg = (selectedBtn) => {
         let loopCounter = 1;
         if (colFoodElement == null) {
             for (const [index, mealByCtg] of meals.entries()) {
+                const idMealCuk = meals[index].idMeal;
                 const nameMeal = meals[index].strMeal;
                 const thumbMeal = meals[index].strMealThumb;
                 tempArray[index] = {
+                    mealId: idMealCuk,
                     mealName: nameMeal,
                     mealThumb: thumbMeal
                 };
@@ -82,12 +84,15 @@ window.mealsFilteredByCtg = (selectedBtn) => {
         } else {
             swiperWrapperElement.textContent = ``;
             for (const [index, mealByCtg] of meals.entries()) {
+                const idMealCuk = meals[index].idMeal;
                 const nameMeal = meals[index].strMeal;
                 const thumbMeal = meals[index].strMealThumb;
                 tempArray[index] = {
+                    mealId: idMealCuk,
                     mealName: nameMeal,
                     mealThumb: thumbMeal
                 };
+
                 
                 if (loopCounter % 9 == 0) {
                     renderSwiper(pageCounter);
@@ -101,5 +106,19 @@ window.mealsFilteredByCtg = (selectedBtn) => {
                 loopCounter++;
             }
         }
+
+        
+        /* const mealNameElement = document.querySelector('#meal-name');
+        console.log(mealNameElement);
+        mealNameElement.addEventListener('click', function () {
+            console.log(mealNameElement.value);
+        }); */
     }
+
+    
+}
+
+window.cobaFunction = (mealId) => {
+    /* console.log(mealId); */
+    selectedMealRecipe(mealId);
 }
