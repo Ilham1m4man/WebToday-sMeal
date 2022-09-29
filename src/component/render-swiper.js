@@ -18,8 +18,8 @@ window.renderListedMealByCtg = function(tempArray, pageCounter) {
             <div class="card card-food text-center ratio ratio-21x9">
                 <img src="${element.mealThumb}" alt="${element.mealName}" class="card-img-top card-thumb">
                 <div class="card-body text-center fw-light ctgName">
-                    <a class="btn stretched-link">
-                        <h5 class=" fw-light fs-6 position-absolute top-50 start-50 translate-middle">${element.mealName}</h5>
+                    <a class="btn stretched-link" onclick="cobaFunction('${element.mealId}')">
+                        <h5 class=" fw-light fs-6 position-absolute top-50 start-50 translate-middle" id="meal-name">${element.mealName}</h5>
                     </a>
                 </div>        
             </div>
