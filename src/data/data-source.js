@@ -53,6 +53,23 @@ class DataSource {
             alert(error);
         });
     }
+
+    static searchMealById(ID) {
+        return fetch(`${baseURL()}/lookup.php?i=${ID}`)
+        .then(response => {
+            return response.json();
+        })
+        .then(responseJson => {
+            if (responseJson.meals) {
+                return Promise.resolve(responseJson.meals);
+            } else {
+                return Promise.reject(`Please check your internet connection`);
+            }
+        })
+        .catch(error => {
+            alert(error);
+        });
+    }
 }
 
 export default DataSource;
