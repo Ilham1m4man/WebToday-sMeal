@@ -74,7 +74,7 @@ class RandomizeSection extends HTMLElement {
         <div class="container">
             <div class="row justify-content-center">
                 <div class="text-center row justify-content-center" style="color: #4D3E3E;">
-                    <h1 class="fs-1 fw-bold">What's your meal today?</h1>
+                    <h1 class="fw-bold" style="font-size: 4em">What's your meal today?</h1>
                     <div class="time row">
                         <span id="clock"></span>
                         <span id="date"></span>
@@ -87,7 +87,7 @@ class RandomizeSection extends HTMLElement {
                         </div>
                     </div>
                     <h5 class="fw-bold">You have <span id="click-counter"></span> chances to click this button</h5>
-                    <p>Your chance will reset every midnight (00.00)</p>
+                    <p style="font-size: 0.95em">*Your chance will reset every midnight (00.00)</p>
                 </div>
             </div>
         </div>
@@ -104,7 +104,7 @@ class RandomizeSection extends HTMLElement {
             const clockElement = document.querySelector('#clock')
             const dateElement = document.querySelector('#date')
             moment.locale('id');
-            clockElement.innerText = moment().format('LTS');
+            clockElement.innerText = moment().format('LT');
             dateElement.innerText = moment().format('LL');
         }
     
