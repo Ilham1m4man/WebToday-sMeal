@@ -91,7 +91,7 @@ class RandomizeSection extends HTMLElement {
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container is-hidden" id="your-todays-cont">
         <h2 class="fw-bold" id="your-todays">Your Today's Meal is...</h2>
             <div class="row justify-content-center">
                 <div id="listMeal" class="row justify-content-center w-75"></div>
