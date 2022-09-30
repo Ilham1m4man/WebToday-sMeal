@@ -4,6 +4,7 @@ import './component/render-swiper.js';
 import './component/listed-meals.js';
 import './component/list-categories.js';
 import './component/recipes.js';
+import './component/kang-render-table.js';
 
 import DataSource from './data/data-source.js';
 import Swiper, { Navigation, Pagination } from 'swiper';
@@ -41,6 +42,7 @@ function main() {
         const name = meals[0].strMeal;
         const thumb = meals[0].strMealThumb;
         const category = meals[0].strCategory;
+        const mealId = meals[0].idMeal;
 
         infoElement.innerHTML = `
         <style>
@@ -60,6 +62,10 @@ function main() {
             max-height: 300px;
             object-fit: cover;
             object-position: center;
+        }
+
+        #meal-name-title {
+            font-size: 2em;
         }
 
         #random-meal-card {
@@ -115,12 +121,27 @@ function main() {
             background-color: var(--pr-color);
         }
 
-        .main-item > h4 {
-            background-color: rgb(255, 195, 139, 0.5);
-            border-radius: 2px;
-            padding: 50px;
-            border-radius: 20px;
-            
+        .recipe-btn {
+            background-color: var(--fr-color);
+            color: var(--sc-color);
+            padding: 7px;
+            border-radius: 5px;
+            border: none;
+            transition: all 0.2s ease-out;
+        }
+        
+        .recipe-btn:hover {
+            box-shadow: 0px 4px 10px 0px rgba(255,146,107,1);
+            background-color: var(--rd-color);
+            color: var(--pr-color);
+            transform: translateY(-8%);
+        
+        }
+        
+        .recipe-btn:active {
+            box-shadow: inherit;
+            transform: translateY(0%);
+            background-color: var(--fr-color);
         }
         </style>
 
@@ -132,15 +153,16 @@ function main() {
                     <div class="card" id="random-meal-card">
                         <img class="card-img-top" id="thumbnail" src="${thumb}">
                         <div class="card-body">
-                            <h2 class="card-title" style="color: #FFC38B">${name}</h2>
-                            <h4 class="card-title">Kategori: ${category}</h4>
-                            <button type="button" class="btn btn-secondary">Lihat Resep</button>
+                            <h1 class="card-title" style="color: #FFC38B" id="meal-name-title">${name}</h1>
+                            <h4 class="card-title">Category: ${category}</h4>
+                            <a href="#the-recipe">
+                                <button type="button" class="recipe-btn" onclick="sendId('${mealId}')">Recipe</button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
         `;
     }
 
@@ -195,6 +217,8 @@ function main() {
         } else {
             btnRandom.removeAttribute('style', 'pointer-events: none')
             btnRandom.addEventListener('click', function () {
+                const yourTodaysElm = document.querySelector('#your-todays-cont');
+                yourTodaysElm.classList.remove('is-hidden');
                 let decreaseClickCounter = loadDataFromStorage() - 1;
                 saveData(decreaseClickCounter);
                 renderClickCounter();
