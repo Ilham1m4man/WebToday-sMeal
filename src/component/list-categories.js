@@ -96,16 +96,6 @@ class ListCategories extends HTMLElement {
             
             selectedCtg.addEventListener('click', function () {
                 sendSelectedBtn(selectedBtn.strCategory);
-                
-                /* const semuaNamaSCtg = document.querySelectorAll('.ctgBtn');
-                    
-                for (let i = 0; i < semuaNamaSCtg.length; i++) {
-                    if (semuaNamaSCtg[i].innerText.toUpperCase().includes(selectedBtn.strCategory.toUpperCase())) {
-                        semuaNamaSCtg[i].parentElement.classList.remove('is-hidden');
-                    } else {
-                        semuaNamaSCtg[i].parentElement.classList.add('is-hidden');
-                    }
-                } */
             })
         }
 
