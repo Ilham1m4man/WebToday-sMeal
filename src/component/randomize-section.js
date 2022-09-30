@@ -69,6 +69,32 @@ class RandomizeSection extends HTMLElement {
                 -moz-border-radius: 100px;
                 border-radius: 100px;
             }
+            
+            .time {
+                border-radius: 25px;
+                background: #4D3E3E;
+                box-shadow: rgba(255, 146, 107, 0.09) 0px 2px 1px,
+                    rgba(255, 146, 107, 0.09) 0px 4px 2px,
+                    rgba(255, 146, 107, 0.09) 0px 8px 4px,
+                    rgba(255, 146, 107, 0.09) 0px 16px 8px,
+                    rgba(255, 146, 107, 0.09) 0px 32px 16px;
+                color: var(--sc-color);
+                max-width: 280px;
+                margin: 10px 30px;
+                border: none;
+            }
+            
+            .time #clock {
+                font-size: 3em;
+                margin: 0 auto;
+                padding-top: 0;
+            }
+            
+            .time #date {
+                font-size: 24px;
+                margin: 0 auto;
+                padding-bottom: 10px;
+            }
         </style>
 
         <div class="container">
