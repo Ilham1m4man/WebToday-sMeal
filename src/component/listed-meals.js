@@ -1,4 +1,5 @@
 import DataSource from "../data/data-source.js";
+import Recipes from "./recipes.js";
 
 class ContFilteredMeal extends HTMLElement {
     constructor() {
@@ -11,23 +12,16 @@ class ContFilteredMeal extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <div class="container">
-                <h1 id="title-listed-ctg" class="fw-bold"></h1>
+            <div class="container is-hidden" id="listed-meal-cont">
+                <h2 id="title-listed-ctg" class="fw-bold"></h2>
                 <div class="row" id="listed-ctg">
-                    <!-- Slider main container -->
                     <div class="swiper">
-                        <!-- Additional required wrapper -->
                         <div class="swiper-wrapper"></div>
 
-                        <!-- Pagination -->
                         <div class="swiper-pagination"></div>
 
-                        <!-- Navigation buttons -->
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
-                        
-                        <!-- If we need scrollbar -->
-                        <div class="swiper-scrollbar"></div>
                     </div>
                 </div>
             </div>
@@ -48,6 +42,9 @@ window.mealsFilteredByCtg = (selectedBtn) => {
     const showResponseMessage = (message = 'Check your internet connection') => {
         alert(message);
     }
+
+    const contElement = document.querySelector('#listed-meal-cont');
+    contElement.classList.remove('is-hidden');
 
     const renderFilteredMeals = (meals) => {
         const titleListedCtg = document.querySelector('#title-listed-ctg');
@@ -93,7 +90,6 @@ window.mealsFilteredByCtg = (selectedBtn) => {
                     mealThumb: thumbMeal
                 };
 
-                
                 if (loopCounter % 9 == 0) {
                     renderSwiper(pageCounter);
                     renderListedMealByCtg(tempArray, pageCounter);
@@ -106,19 +102,12 @@ window.mealsFilteredByCtg = (selectedBtn) => {
                 loopCounter++;
             }
         }
-
-        
-        /* const mealNameElement = document.querySelector('#meal-name');
-        console.log(mealNameElement);
-        mealNameElement.addEventListener('click', function () {
-            console.log(mealNameElement.value);
-        }); */
     }
 
     
 }
 
-window.cobaFunction = (mealId) => {
-    /* console.log(mealId); */
-    selectedMealRecipe(mealId);
+window.sendId = (mealId) => {
+    const instanceRecipe = new Recipes(mealId);
+    instanceRecipe.getDataFromServer(mealId);
 }
