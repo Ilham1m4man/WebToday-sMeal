@@ -1,3 +1,30 @@
+/* pt-sans-regular - latin */
+@font-face {
+    font-family: 'PT Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/pt-sans-v17-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('./fonts/pt-sans-v17-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/pt-sans-v17-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./fonts/pt-sans-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/pt-sans-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/pt-sans-v17-latin-regular.svg#PTSans') format('svg'); /* Legacy iOS */
+  }
+  /* pt-sans-700 - latin */
+  @font-face {
+    font-family: 'PT Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./fonts/pt-sans-v17-latin-700.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('./fonts/pt-sans-v17-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/pt-sans-v17-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./fonts/pt-sans-v17-latin-700.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/pt-sans-v17-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/pt-sans-v17-latin-700.svg#PTSans') format('svg'); /* Legacy iOS */
+  }
+
 :root {
     --pr-color: #4D3E3E;
     --sc-color: #FFF3CD;
@@ -12,7 +39,7 @@
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'PT Sans';
     background-color: var(--sc-color);
 }
 
@@ -20,13 +47,22 @@ main {
     margin: 32px auto;
 }
 
+h2 {
+    padding: 15px;
+}
+
 .container {
-    border: 1px solid red;
-    margin: 20px auto;
+    margin: 70px auto;
+    border-radius: 15px;
+    box-shadow: rgba(77, 62, 62, 0.09) 0px 2px 1px,
+        rgba(77, 62, 62, 0.09) 0px 4px 2px,
+        rgba(77, 62, 62, 0.09) 0px 8px 4px,
+        rgba(77, 62, 62, 0.09) 0px 16px 8px,
+        rgba(77, 62, 62, 0.09) 0px 32px 16px;
 }
 
 .row {
-    border: 1px solid green;
+    margin-bottom: 10px;
 }
 
 .is-hidden {
@@ -38,34 +74,8 @@ main {
     height: 100%;
 }
 
-
 .stretched-link {
     border: none;
     background-color: transparent;
 }
-
-.time {
-    border-radius: 25px;
-    background: #4D3E3E;
-    /* box-shadow:  15px 15px 30px #604e4e,
-                -15px -15px 30px #604e4e; */
-    color: var(--sc-color);
-    max-width: 280px;
-    margin: 10px 30px;
-    border: none;
-}
-
-.time #clock {
-    font-size: 3em;
-    margin: 0 auto;
-    padding-top: 0;
-}
-
-.time #date {
-    font-size: 24px;
-    margin: 0 auto;
-    padding-bottom: 10px;
-}
-
-
 
